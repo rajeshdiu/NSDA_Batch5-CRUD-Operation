@@ -1,0 +1,59 @@
+{% extends "master.html" %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>All Students</h1>
+<h3><a href="{% url 'addTeacher' %}">Add Teacher</a></h3>
+
+<table id="customers">
+  <tr>
+    <th>Teacher Name</th>
+    <th>address</th>
+    <th>Age</th>
+  </tr>
+  
+{% for i in Teachers %}
+ <tr>
+    <td>{{i.Teacher_Name}}</td>
+    <td>{{i.Address}}</td>
+    <td>{{i.Teacher_age}}</td>
+   
+  </tr>
+{% endfor %}
+ 
+ 
+</table>
+
+</body>
+</html>
+{% endblock body %}

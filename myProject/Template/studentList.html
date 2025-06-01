@@ -1,0 +1,145 @@
+{% extends "master.html" %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  /* Reset some default styling */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+
+  #customers {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  #customers th, #customers td {
+    text-align: left;
+    padding: 14px 20px;
+  }
+
+  #customers thead {
+    background: linear-gradient(90deg, #00b09b, #96c93d);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  #customers tbody tr {
+    border-bottom: 1px solid #e1e4e8;
+    transition: background-color 0.3s ease;
+  }
+
+  #customers tbody tr:nth-child(even) {
+    background-color: #f8fafd;
+  }
+
+  #customers tbody tr:hover {
+    background-color: #d1e7dd; /* subtle greenish hover */
+  }
+
+  /* Action buttons */
+  #customers td a {
+    text-decoration: none;
+    padding: 6px 12px;
+    margin-right: 6px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+
+  #customers td a.edit {
+    background-color: #0d6efd;
+    color: white;
+  }
+
+  #customers td a.edit:hover {
+    background-color: #084cd9;
+  }
+
+  #customers td a.delete {
+    background-color: #dc3545;
+    color: white;
+  }
+
+  #customers td a.delete:hover {
+    background-color: #a0252d;
+  }
+
+  #customers td a.view {
+    background-color: #198754;
+    color: white;
+  }
+
+  #customers td a.view:hover {
+    background-color: #116530;
+  }
+
+  /* Responsive - on small screens, make table scroll horizontally */
+  @media (max-width: 600px) {
+    #customers {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>All Students</h1>
+
+<table id="customers">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Department</th>
+      <th>City</th>
+      <th>Age</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in data %}
+    <tr>
+      <td>{{i.Student_Name}}</td>
+      <td>{{i.Department_Name}}</td>
+      <td>{{i.City_Name}}</td>
+      <td>{{i.Student_Age}}</td>
+
+      <td>
+        <a href="  " class="edit">Edit</a>
+        <a href=" {% url 'deleteStudent' i.id %} " class="delete">Delete</a>
+        <a href="#" class="view">View</a>
+      </td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>
+
+{% endblock body %}
