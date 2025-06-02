@@ -89,3 +89,23 @@ def deleteStudent(req,myid):
     student.delete()
     
     return redirect("studentList")
+
+def editStudent(req,myid):
+    
+    student=StudentModel.objects.get(id=myid)
+    context={
+        'data':student
+    }
+    if req.method=='POST':
+        student=StudentModel(
+            id=myid,
+            Student_Name=req.POST.get("Student_Name"),
+            Department_Name=req.POST.get("Department_Name"),
+            City_Name=req.POST.get("City_Name"),
+            Student_Age=req.POST.get("Student_Age"),
+        )
+        
+        student.save()
+        return redirect("studentList")
+    
+    return render(req,"editStudent.html",context)

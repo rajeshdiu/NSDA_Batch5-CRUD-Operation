@@ -129,7 +129,7 @@
       <td>{{i.Student_Age}}</td>
 
       <td>
-        <a href="  " class="edit">Edit</a>
+        <a href=" {% url 'editStudent' i.id %} " class="edit">Edit</a>
         <a href=" {% url 'deleteStudent' i.id %} " class="delete">Delete</a>
         <a href="#" class="view">View</a>
       </td>
